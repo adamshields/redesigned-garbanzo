@@ -1,0 +1,62 @@
+{
+  "//": {
+    "metadata": {
+      "backend": "local",
+      "stackName": "learn-cdktf-docker",
+      "version": "0.17.3"
+    },
+    "outputs": {
+    }
+  },
+  "provider": {
+    "docker": [
+      {
+      }
+    ]
+  },
+  "resource": {
+    "docker_container": {
+      "nginxContainer": {
+        "//": {
+          "metadata": {
+            "path": "learn-cdktf-docker/nginxContainer",
+            "uniqueId": "nginxContainer"
+          }
+        },
+        "image": "${docker_image.nginxImage.name}",
+        "name": "adam-tutorial",
+        "ports": [
+          {
+            "external": 8000,
+            "internal": 80
+          }
+        ]
+      }
+    },
+    "docker_image": {
+      "nginxImage": {
+        "//": {
+          "metadata": {
+            "path": "learn-cdktf-docker/nginxImage",
+            "uniqueId": "nginxImage"
+          }
+        },
+        "keep_locally": false,
+        "name": "nginx:latest"
+      }
+    }
+  },
+  "terraform": {
+    "backend": {
+      "local": {
+        "path": "D:\\terraform\\learn-cdktf-docker\\terraform.learn-cdktf-docker.tfstate"
+      }
+    },
+    "required_providers": {
+      "docker": {
+        "source": "kreuzwerker/docker",
+        "version": "3.0.2"
+      }
+    }
+  }
+}
